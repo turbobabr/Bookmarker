@@ -34,6 +34,7 @@ In case the shortcut is taken by the existing bookmark, it will be re-assigned t
 There is a handy command for bookmarking selected layers and get the created bookmarks auto-assigned with `Control-[0..9]` shortcuts.
 
 Usage:
+
 1. Select one or several layers you want to bookmark.
 2. Hit `Control-B` to bookmark them.
 
