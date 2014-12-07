@@ -1,7 +1,3 @@
-bookmarker
-==========
-Work in progress...
+<img src="https://raw.githubusercontent.com/turbobabr/Bookmarker/gh-pages/docs/bookmarker_github_hero.png">
 
-> This text came from the `develop` branch.
-
-> One more commit ahead of master! :)
+Bookmarker is blah-blah-blah....! :)
