@@ -37,11 +37,11 @@ Bookmarker can be used in many ways. The primary feature is...
 `Control-Shift-Option-B`
 `Control-Shift-Option-[0..9]`
 
-### Nivigating through bookmarks using `Goto Bookmark` panel
+### Nivigating through bookmarks using 'Goto Bookmark' panel
 
 `Control-Shift-B`
 
-### Using `Overview Mode`
+### Navigating through bookmarks using 'Overview Mode'
 
 `Control-Z`
 
