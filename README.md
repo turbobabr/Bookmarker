@@ -45,15 +45,19 @@ You can navigate to the bookmarked layers that were assigned to a specific short
 
 #### Navigate: Using 'Bookmarks Panel'
 
+When you have a huge list of meaningfully named bookmarks its easier to navigate using bookmarks panel:
+
 1. Activate 'Bookmarks Panel' using `Control-Shift-B` shortcut.
 2. Select any listed shortcut from the panels' list using mouse or `Up/Down` keys:
 3. Click `OK` button or hit `Enter` to navigate.
 
 #### Navigate: Using 'Overview Mode'
 
+A very convenient way of navigation through bookmarks is using of overview mode:
+
 1. Switch to the `Overview Mode` using `Control-Z` shortcut.
 2. Select the bookmark you want to navigate to.
-3. Hit `Control-Z` to navigate.
+3. Hit `Control-Z` to navigate to it.
 
 #### Navigate: Using 'Prev/Next' commands
 
@@ -62,10 +66,13 @@ You can navigate to the bookmarked layers that were assigned to a specific short
 
 #### Remove: Certain bookmark
 
+To remove a certain bookmark:
 1. Switch to the `Overview Mode` using `Control-Z`.
 2. Select the bookmark you want to remove.
 3. Hit `Command-Delete` to remove it.
 4. Use `Control-Z` shortcut to exit from overview mode.
+
+In case bookmark had the assigned shortcut to it, it will be emptied.
 
 #### Remove: All bookmarks
 
