@@ -24,9 +24,6 @@ Bookmarker can be used in many ways. The primary feature is...
 
 ### Bookmarking selected layers and assigning shortcuts
 
-<img src="https://raw.githubusercontent.com/turbobabr/Bookmarker/gh-pages/docs/shortcuts/control-shift-0-9.png">
-<img src="https://raw.githubusercontent.com/turbobabr/Bookmarker/gh-pages/docs/shortcuts/control-0-9.png">
-
 ### Auto-Bookmarking selected layers
 
 `Control-B`
@@ -59,15 +56,7 @@ Bookmarker can be used in many ways. The primary feature is...
 
 #### Removing certain bookmark
 
-<table>
-<tr>
-<td>Switch to the `Oview Mode` using</td>
-<td><img src="https://raw.githubusercontent.com/turbobabr/Bookmarker/gh-pages/docs/shortcuts/control-z.png" style="vertical-align: middle;"></td>
-<tr>
-</table>
-
-Switch to the `Oview Mode` using <a><img src="https://raw.githubusercontent.com/turbobabr/Bookmarker/gh-pages/docs/shortcuts/control-z.png" style="vertical-align: middle;"></a>
-
+1. Switch to the `Overview Mode` using `Control-Z`.
 2. Select the bookmark you want to remove.
 3. Hit `Command-Delete` to remove it.
 4. Use `Control-Z` shortcut to exit from overview mode.
