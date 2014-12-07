@@ -31,6 +31,9 @@ In case the shortcut is taken by the existing bookmark, it will be re-assigned t
 
 ### Auto-Bookmarking selected layers
 
+There is a handy command for bookmarking selected layers and get the created bookmarks auto-assigned with `Control-[0..9]` shortcuts.
+
+Usage:
 1. Select one or several layers you want to bookmark.
 2. Hit `Control-B` to bookmark them.
 
@@ -52,16 +55,6 @@ In case there is an empty slot in `Control-[0..9]` shortcuts set, the first empt
 1. Switch to the `Overview Mode` using `Control-Z` shortcut.
 2. Select the bookmark you want to navigate to.
 3. Hit `Control-Z` to navigate.
-
-#### Navigate: Using `Walkthrough` shortcuts.
-
-- `Control-Shift-,` Previous bookmark.
-- `Control-Shift-.` Next bookmark.
-
-### Advanced bookmarks
-
-`Control-Shift-Option-B`
-`Control-Shift-Option-[0..9]`
 
 ### Detailed/Preview state workflow
 
