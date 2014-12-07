@@ -59,7 +59,12 @@ Bookmarker can be used in many ways. The primary feature is...
 
 #### Removing certain bookmark
 
-<div style="background-image: url(https://raw.githubusercontent.com/turbobabr/Bookmarker/gh-pages/docs/shortcuts/control-z.png);width:50px;height:100px;">data</div>
+<table>
+<tr>
+<td>Switch to the `Oview Mode` using</td>
+<td><img src="https://raw.githubusercontent.com/turbobabr/Bookmarker/gh-pages/docs/shortcuts/control-z.png" style="vertical-align: middle;"></td>
+<tr>
+</table>
 
 Switch to the `Oview Mode` using <a><img src="https://raw.githubusercontent.com/turbobabr/Bookmarker/gh-pages/docs/shortcuts/control-z.png" style="vertical-align: middle;"></a>
 
