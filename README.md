@@ -26,16 +26,12 @@ Bookmarker can be used in many ways. The primary feature is...
 
 ### Bookmarking selected layers and assigning shortcuts
 
-[![Screencast](https://raw.githubusercontent.com/turbobabr/Bookmarker/gh-pages/docs/screencast_placeholder.png)](http://google.com)
-
 1. Select one or several layers you want to bookmark.
 2. Hit `Control-Shift-[0..9]` to bookmark them, where `[0..9]` is a numeric key and a slot number you want to assign the created shortcut to.
 
 In case the shortcut is taken by the existing bookmark, it will be re-assigned to a new one and the previously assigned bookmark will be automatically discarded.
 
 ### Auto-Bookmarking selected layers
-
-[![Screencast](https://raw.githubusercontent.com/turbobabr/Bookmarker/gh-pages/docs/screencast_placeholder.png)](http://google.com)
 
 There is a handy command for bookmarking selected layers and get the created bookmarks auto-assigned with `Control-[0..9]` shortcuts:
 
@@ -46,14 +42,10 @@ In case there is an empty slot in `Control-[0..9]` shortcuts set, the first empt
 
 #### Navigate: Using number shortcuts
 
-[![Screencast](https://raw.githubusercontent.com/turbobabr/Bookmarker/gh-pages/docs/screencast_placeholder.png)](http://google.com)
-
 You can navigate to the bookmarked layers that were assigned to a specific shortcut using:
 - `Control-[0..9]`, where `[0..9]` is a numeric key and a slot number of the shortcut you want to navigate to.
 
 #### Navigate: Using 'Bookmarks Panel'
-
-[![Screencast](https://raw.githubusercontent.com/turbobabr/Bookmarker/gh-pages/docs/screencast_placeholder.png)](http://google.com)
 
 When you have a huge list of meaningfully named bookmarks its easier to navigate using bookmarks panel:
 
@@ -63,8 +55,6 @@ When you have a huge list of meaningfully named bookmarks its easier to navigate
 
 #### Navigate: Using 'Overview Mode'
 
-[![Screencast](https://raw.githubusercontent.com/turbobabr/Bookmarker/gh-pages/docs/screencast_placeholder.png)](http://google.com)
-
 A very convenient way of navigation through bookmarks is using of overview mode:
 
 1. Switch to the `Overview Mode` using `Control-Z` shortcut.
@@ -73,14 +63,10 @@ A very convenient way of navigation through bookmarks is using of overview mode:
 
 #### Navigate: Using 'Prev/Next' commands
 
-[![Screencast](https://raw.githubusercontent.com/turbobabr/Bookmarker/gh-pages/docs/screencast_placeholder.png)](http://google.com)
-
 - Previous bookmark `Control-Shift-,`
 - Next bookmark `Control-Shift-.`
 
 #### Remove: Certain bookmark
-
-[![Screencast](https://raw.githubusercontent.com/turbobabr/Bookmarker/gh-pages/docs/screencast_placeholder.png)](http://google.com)
 
 To remove a certain bookmark:
 
@@ -92,8 +78,6 @@ To remove a certain bookmark:
 In case bookmark had the assigned shortcut to it, it will be emptied.
 
 #### Remove: All bookmarks
-
-[![Screencast](https://raw.githubusercontent.com/turbobabr/Bookmarker/gh-pages/docs/screencast_placeholder.png)](http://google.com)
 
 You can remove all the bookmarks from the document using the following two techniques:
 - By removing layer named `#bookmarkerMetaLayer#` that is located at the bottom of your layer list in the first page of your document.
