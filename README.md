@@ -33,15 +33,20 @@ Bookmarker can be used in many ways. The primary feature is...
 
 #### Using number shortcuts
 
-> TODO: Text goes here...
+ You can navigate to bookmarked layers that were assigned to a specific shortcut using:
+ `Control-[0..9]`
 
 #### Using 'Bookmarks Panel'
 
-> TODO: Text goes here...
+1. Activate 'Bookmarks Panel' using `Control-Shift-B` shortcut.
+2. Select any listed shortcut from the panels' list using mouse or `Up/Down` keys:
+3. Click `OK` button or hit `Enter` to navigate.
 
 #### Using 'Overview Mode'
 
-> TODO: Text goes here...
+1. Switch to the `Overview Mode` using `Control-Z` shortcut.
+2. Select the bookmark you want to navigate to.
+3. Hit `Control-Z` to navigate.
 
 ### Advanced bookmarks
 
@@ -54,14 +59,14 @@ Bookmarker can be used in many ways. The primary feature is...
 
 ### Removing bookmarks
 
-#### Removing certain bookmark
+#### Remove certain bookmark
 
 1. Switch to the `Overview Mode` using `Control-Z`.
 2. Select the bookmark you want to remove.
 3. Hit `Command-Delete` to remove it.
 4. Use `Control-Z` shortcut to exit from overview mode.
 
-#### Removing certain bookmark
+#### Remove all bookmarks
 
 You can remove all the bookmarks from the document using the following two techniques:
 - By removing layer named `#bookmarkerMetaLayer#` that is located at the bottom of your layer list in the first page of your document.
