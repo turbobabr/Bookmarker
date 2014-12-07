@@ -24,11 +24,17 @@ Bookmarker can be used in many ways. The primary feature is...
 
 ### Bookmarking selected layers and assigning shortcuts
 
+1. Select one or several layers you want to bookmark.
+2. Hit `Control-Shift-[0..9]` to bookmark them, where `[0..9]` is a numeric key and a slot number you want to assign the created shortcut to.
+
+In case the shortcut is taken by the existing bookmark, it will be re-assigned to a new one and the previously assigned bookmark will be automatically discarded.
+
 ### Auto-Bookmarking selected layers
 
-`Control-B`
-`Control-Shift-Option-B`
+1. Select one or several layers you want to bookmark.
+2. Hit `Control-B` to bookmark them.
 
+In case there is an empty slot in `Control-[0..9]` shortcuts set, the first empty shortcut will be auto assigned to the created bookmark. Otherwise it will have no assigned shortcut.
 
 #### Navigate: Using number shortcuts
 
@@ -46,6 +52,11 @@ Bookmarker can be used in many ways. The primary feature is...
 1. Switch to the `Overview Mode` using `Control-Z` shortcut.
 2. Select the bookmark you want to navigate to.
 3. Hit `Control-Z` to navigate.
+
+#### Navigate: Using `Walkthrough` shortcuts.
+
+- `Control-Shift-,` Previous bookmark.
+- `Control-Shift-.` Next bookmark.
 
 ### Advanced bookmarks
 
