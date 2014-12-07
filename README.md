@@ -22,30 +22,34 @@ This plugin is a real time saver when you work with huge documents and want to q
 
 Bookmarker can be used in many ways. The primary feature is...
 
-### Assigning bookmarks to shortcuts
+### Bookmarking selected layers and assigning shortcuts
 
-`Control-B`
 `Control-Shift-[0..9]`
 `Control-[0..9]`
 
-### Assigning bookmarks to shortcuts
+### Auto-Bookmarking selected layers
 
 `Control-B`
-`Control-Shift-[0..9]`
-`Control-[0..9]`
+`Control-Shift-Option-B`
+
+### Nivigating through bookmarks
+
+#### Using number shortcuts
+
+> TODO: Text goes here...
+
+#### Using 'Bookmarks Panel'
+
+> TODO: Text goes here...
+
+#### Using 'Overview Mode'
+
+> TODO: Text goes here...
 
 ### Advanced bookmarks
 
 `Control-Shift-Option-B`
 `Control-Shift-Option-[0..9]`
-
-### Nivigating through bookmarks using 'Goto Bookmark' panel
-
-`Control-Shift-B`
-
-### Navigating through bookmarks using 'Overview Mode'
-
-`Control-Z`
 
 ### Detailed/Preview state workflow
 
