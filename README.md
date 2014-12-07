@@ -40,8 +40,8 @@ In case there is an empty slot in `Control-[0..9]` shortcuts set, the first empt
 
 #### Navigate: Using number shortcuts
 
- You can navigate to bookmarked layers that were assigned to a specific shortcut using:
- `Control-[0..9]`
+You can navigate to the bookmarked layers that were assigned to a specific shortcut using:
+- `Control-[0..9]`, where [0..9] is a numeric key and a slot number of the shortcut you want to navigate to.
 
 #### Navigate: Using 'Bookmarks Panel'
 
@@ -55,28 +55,23 @@ In case there is an empty slot in `Control-[0..9]` shortcuts set, the first empt
 2. Select the bookmark you want to navigate to.
 3. Hit `Control-Z` to navigate.
 
-### Detailed/Preview state workflow
+#### Navigate: Using 'Prev/Next' commands
 
-> TODO: Text goes here...
+- Previous bookmark `Control-Shift-,`
+- Next bookmark `Control-Shift-.`
 
-
-
-### Remove: Certain bookmark
+#### Remove: Certain bookmark
 
 1. Switch to the `Overview Mode` using `Control-Z`.
 2. Select the bookmark you want to remove.
 3. Hit `Command-Delete` to remove it.
 4. Use `Control-Z` shortcut to exit from overview mode.
 
-### Remove: All bookmarks
+#### Remove: All bookmarks
 
 You can remove all the bookmarks from the document using the following two techniques:
 - By removing layer named `#bookmarkerMetaLayer#` that is located at the bottom of your layer list in the first page of your document.
 - By running plugin `Bookmarker -> Remove All Bookmarks`
-
-### Quick walkthrough
-
-> TODO: Text goes here...
 
 ## Feedback
 
