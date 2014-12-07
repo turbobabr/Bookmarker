@@ -6,7 +6,7 @@
         Narrator.command("Edit existing bookmark","control-b");
         Bookmarker.editBookmark(layer);
     } else {
-        Narrator.command("Toggle Bookmark","control-b");
+        Narrator.command("Auto-Bookmark Layers","control-b");
         Bookmarker.toggleBookmark(selection);
     }
 })();

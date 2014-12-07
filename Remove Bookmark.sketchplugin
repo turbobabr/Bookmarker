@@ -2,7 +2,7 @@
 #import 'bookmarks.js'
 (function(){
 
-    Narrator.command("command-⌫","Remove Selected Bookmark");
+    Narrator.command("Remove Selected Bookmarks","command-⌫");
 
     // Select all the visual representations.
     var list=SketchQuery.find(selection,"(className == 'MSLayerGroup') && (ANY layers.array.name = '#selectorMetaLayer#')");

@@ -28,11 +28,13 @@ Bookmarker can be used in many ways. The primary feature is...
 `Control-Shift-[0..9]`
 `Control-[0..9]`
 
-### Nivigating through bookmarks using shortcuts
+### Assigning bookmarks to shortcuts
 
-> TODO: Text goes here...
+`Control-B`
+`Control-Shift-[0..9]`
+`Control-[0..9]`
 
-### Assigning and configuring its properties
+### Advanced bookmarks
 
 `Control-Shift-Option-B`
 `Control-Shift-Option-[0..9]`
