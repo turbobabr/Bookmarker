@@ -14,11 +14,41 @@ This plugin is a real time saver when you work with huge documents and want to q
 
 ## Change Log
 
-#### v0.1.0: December 7, 2014
+##### v0.1.0: December 7, 2014
 
 - Initial release with a bunch of bugs! :)
 
 ## Usage
+
+Bookmarker can be used in many ways. The primary feature is...
+
+### Assigning bookmarks to shortcuts
+
+> TODO: Text goes here...
+
+### Nivigating through bookmarks using shortcuts
+
+> TODO: Text goes here...
+
+### Nivigating through bookmarks using `Goto Bookmark` panel
+
+> TODO: Text goes here...
+
+### Using `Overview Mode`
+
+> TODO: Text goes here...
+
+### Detailed/Preview workflow
+
+> TODO: Text goes here...
+
+### Removing bookmarks
+
+> TODO: Text goes here...
+
+### Quick walkthrough
+
+> TODO: Text goes here...
 
 ## Feedback
 
