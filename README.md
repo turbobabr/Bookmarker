@@ -24,27 +24,45 @@ Bookmarker can be used in many ways. The primary feature is...
 
 ### Assigning bookmarks to shortcuts
 
-> TODO: Text goes here...
+`Control-B`
+`Control-Shift-[0..9]`
+`Control-[0..9]`
 
 ### Nivigating through bookmarks using shortcuts
 
 > TODO: Text goes here...
 
+### Assigning and configuring its properties
+
+`Control-Shift-Option-B`
+`Control-Shift-Option-[0..9]`
+
 ### Nivigating through bookmarks using `Goto Bookmark` panel
 
-> TODO: Text goes here...
+`Control-Shift-B`
 
 ### Using `Overview Mode`
 
-> TODO: Text goes here...
+`Control-Z`
 
-### Detailed/Preview workflow
+### Detailed/Preview state workflow
 
 > TODO: Text goes here...
 
 ### Removing bookmarks
 
-> TODO: Text goes here...
+#### Removing certain bookmark
+
+1. Switch to the `Oview Mode` using `Control-Z`
+2. Select the bookmark you want to remove.
+3. Hit `Command-Delete` to remove it.
+4. Use `Control-Z` shortcut to exit from overview mode.
+
+#### Removing certain bookmark
+
+You can remove all the bookmarks from the document using the following two techniques:
+- By removing layer named `#bookmarkerMetaLayer#` that is located at the bottom of your layer list in the first page of your document.
+- By running plugin `Bookmarker -> Remove All Bookmarks`
 
 ### Quick walkthrough
 
