@@ -1,0 +1,5 @@
+// (control shift p)
+#import 'bookmarks.js'
+(function(){
+    Bookmarker.preferences();
+})();

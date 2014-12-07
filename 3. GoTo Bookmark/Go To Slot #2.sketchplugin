@@ -1,0 +1,6 @@
+// (control 2)
+#import 'bookmarks.js'
+(function(){
+    Narrator.command("Navigate to Bookmark #2","control-2");
+    Bookmarker.gotoSlot(2);
+})();

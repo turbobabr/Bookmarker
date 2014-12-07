@@ -1,0 +1,12 @@
+// (control b)
+#import 'bookmarks.js'
+(function(){
+    var layer=selection.firstObject();
+    if(layer && Bookmarker.validateEdit(layer)) {
+        Narrator.command("Edit existing bookmark","control-b");
+        Bookmarker.editBookmark(layer);
+    } else {
+        Narrator.command("Toggle Bookmark","control-b");
+        Bookmarker.toggleBookmark(selection);
+    }
+})();

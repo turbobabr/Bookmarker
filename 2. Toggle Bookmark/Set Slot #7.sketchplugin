@@ -1,0 +1,6 @@
+// (control shift 7)
+#import 'bookmarks.js'
+(function(){
+    Narrator.command("Toggle Bookmark and Assign to Slot #7","control-shift-7");
+    Bookmarker.setSlot(7);
+})();

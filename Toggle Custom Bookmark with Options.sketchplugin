@@ -1,0 +1,6 @@
+// (control shift option b)
+#import 'bookmarks.js'
+(function(){
+    Narrator.command("Toggle Bookmark with Options","control-shift-option-b");
+    Bookmarker.toggleCustomBookmark();
+})();

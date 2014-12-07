@@ -1,0 +1,6 @@
+// (control 10)
+#import 'bookmarks.js'
+(function(){
+    Narrator.command("Navigate to Bookmark #10","control-10");
+    Bookmarker.gotoSlot(10);
+})();

@@ -1,0 +1,6 @@
+// (control shift b)
+#import 'bookmarks.js'
+(function(){
+    Narrator.command("Show Bookmark List","control-shift-b");
+    Bookmarker.showNavigationPanel();
+})();

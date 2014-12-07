@@ -1,0 +1,6 @@
+// (control shift ,)
+#import 'bookmarks.js'
+(function(){
+    Narrator.command("control-shift-,","Previous Bookmark");
+    Bookmarker.navigatePrev();
+})();
