@@ -137,7 +137,8 @@
     };
 
     Narrator.message = function(str) {
-        print("Speaker Deck Message: "+str);
+        // print("Speaker Deck Message: "+str);
+        doc.displayMessage(str);
     };
 
     Narrator.humanizeKeystroke = function(keystroke) {
