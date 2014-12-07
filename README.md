@@ -59,7 +59,7 @@ Bookmarker can be used in many ways. The primary feature is...
 
 #### Removing certain bookmark
 
-1. Switch to the `Oview Mode` using <img src="https://raw.githubusercontent.com/turbobabr/Bookmarker/gh-pages/docs/shortcuts/control-z.png">
+1. Switch to the `Oview Mode` using <img src="https://raw.githubusercontent.com/turbobabr/Bookmarker/gh-pages/docs/shortcuts/control-z.png" style="vertical-align: middle;">
 2. Select the bookmark you want to remove.
 3. Hit `Command-Delete` to remove it.
 4. Use `Control-Z` shortcut to exit from overview mode.
