@@ -3,6 +3,8 @@
 
 Bookmarker is an ultimate solution for bookmarking layers in [Sketch App](http://bohemiancoding.com/sketch/). This plugin is a real time saver when you work with huge documents and want to quickly navigate to any known part of it!
 
+> Currently this plugin is in a beta stage. I will be posting updates in my twitter. Follow me [@turbobabr](https://twitter.com/turbobabr) to stay tuned.
+
 ## Installation
 
 1. [Download Bookmarker.zip archive file]().
@@ -33,7 +35,7 @@ In case the shortcut is taken by the existing bookmark, it will be re-assigned t
 To bookmark layers and configure the created bookmark:
 
 1. Select one or several layers you want to bookmark.
-2. Hit 'Control-Shift-Option-[0..9]'
+2. Hit `Control-Shift-Option-[0..9]`
 3. Setup bookmark name and actions.
 4. Click 'OK' button, or hit 'Enter'.
 
@@ -47,7 +49,7 @@ There is a handy command for bookmarking selected layers and get the created boo
 If you want to use auto-bookmarking command and configure the created bookmark, use the following workflow:
 
 1. Select one or several layer.
-2. Hit 'Control-Shift-Option-B'.
+2. Hit `Control-Shift-Option-B`.
 3. Setup bookmark name and actions.
 4. Click 'OK' button, or hit 'Enter'.
 
@@ -104,7 +106,7 @@ If you discover any issue or have any suggestions, please [open an issue](https:
 
 ## Thanks
 
-Huge thanks to [George Papadakis](https://twitter.com/phaistonian), who has inspired me to create this plugin! :)
+Huge thanks to [George Papadakis](https://twitter.com/phaistonian), who had inspired me to create this plugin! :)
 
 ## License
 
