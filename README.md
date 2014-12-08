@@ -21,7 +21,7 @@ Bookmarker is an ultimate solution for bookmarking layers in [Sketch App](http:/
 ## Usage
 
 Bookmarker has a plethora of features! The best way to explore them is by watching this screencast:
-![Screencast](https://raw.githubusercontent.com/turbobabr/Bookmarker/gh-pages/docs/main_screencast.png)
+[![Screencast](https://raw.githubusercontent.com/turbobabr/Bookmarker/gh-pages/docs/main_screencast.png)](http://quick.as/kzbkt9r9)
 
 ### Bookmarking selected layers and assigning shortcuts
 
