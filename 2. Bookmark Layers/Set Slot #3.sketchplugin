@@ -1,6 +1,6 @@
 // (control shift 3)
 #import 'bookmarks.js'
 (function(){
-    Narrator.command("Toggle Bookmark and Assign to Slot #3","control-shift-3");
+    Narrator.command("Bookmark Selection and Assign to Slot #3","control-shift-3");
     Bookmarker.setSlot(3);
 })();

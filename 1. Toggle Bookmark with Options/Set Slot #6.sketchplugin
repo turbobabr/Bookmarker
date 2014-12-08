@@ -1,6 +1,0 @@
-// (control shift option 6)
-#import 'bookmarks.js'
-(function(){
-    SpeakerDeck.showKeyStoke("control-shift-6","Toggle Bookmark with Options and Assign to Slot #6");
-    Bookmarker.setSlot(6,true);
-})();

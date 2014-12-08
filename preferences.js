@@ -4,10 +4,10 @@
 
     Preferences.default = function() {
         return {
-            playAudio: true,
+            playAudio: false,
             animateWhenScrolling: true,
-            displayBookmarkToggleNotification: false,
-            displayBookmarkNavigateNotification: false,
+            displayBookmarkToggleNotification: true,
+            displayBookmarkNavigateNotification: true,
 
             zoomToFitExpansion: 20
         };
@@ -22,7 +22,7 @@
         UI.showAlert({
             title: "Bookmarker Preferences",
             description: "Setup global settings and options that are document independent.",
-            icon: "/assets/icons/preferences"+(NSScreen.isOnRetinaScreen() ? "@2x" : "")+".png",
+            icon: fs.resolveImageAsset("./icons/preferences.png"),
             fields: {
                 playAudio: {
                     label: "Play Sounds:",

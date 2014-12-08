@@ -1,0 +1,6 @@
+// (control shift option 10)
+#import 'bookmarks.js'
+(function(){
+    Narrator.command("Bookmark Selection with Options and Assign to Slot #10","control-shift-option-10");
+    Bookmarker.setSlot(10,true);
+})();

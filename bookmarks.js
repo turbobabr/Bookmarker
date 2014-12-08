@@ -3,6 +3,7 @@
 #import './cocoascript_modules/narrator.js'
 #import './cocoascript_modules/sketch-query.js'
 #import './utils.js'
+
 (function(){
     var root = this;
 
@@ -31,6 +32,7 @@
         RestoreFromBookmark: "restoreFromBookmark"
     };
 
+    // FIXME: The metadata versioning system should be more clear! :)
     var bookMarkVersion="1";
 
     function bookmarkWithID(bookmarks,id) {
@@ -43,11 +45,6 @@
         }
 
         return null;
-    }
-
-    function normalizeIconScaleFactor(path) {
-        var parts=path.split(".png");
-        return parts[0]+(NSScreen.isOnRetinaScreen() ? "@2x" : "")+".png"
     }
 
     var preferences = Preferences.get();
@@ -105,8 +102,7 @@
             if(artboard) {
                 target=NSArray.arrayWithArray([artboard]);
             } else {
-                // FIXME: Nothing is selected. What should we do about it??
-                throw new Error("Selection is empty! There should be workaround for it!");
+                Narrator.message("You have to select one or several layers to bookmark them! :)")
                 return;
             }
         }
@@ -146,6 +142,7 @@
         }
 
         var meta=this.meta();
+
 
         // Find first empty slot.
         // If there is no any - slot remains undefined.
@@ -213,8 +210,8 @@
 
             var zoomValue=parseInt((doc.currentPage().zoomValue()*100));
             var autoSelect=(bookmark.selectLayers) ? "On" : "Off";
-            indexedMessage+="(Action: "+bookmark.action+" Zoom: "+zoomValue+"% "+"Auto-select: "+autoSelect+")";
-            doc.displayMessage((slotNumber) ? indexedMessage : "Bookmark has been successfully added!");
+            indexedMessage+="(Action: "+bookmark.action+" Zoom: "+zoomValue+"% "+"Auto-select: "+autoSelect+")";            
+            Narrator.message((slotNumber) ? indexedMessage : "Bookmark has been successfully added!");
         }
 
         if(preferences.playAudio && false) {
@@ -227,14 +224,52 @@
         var bookmark=bookmarkWithID(meta.bookmarks,meta.slots[slotNumber.toString()]);
         if(bookmark) {
             this.navigateToBookmark(bookmark,slotNumber);
-        } else {
-            doc.displayMessage("THIS SLOT IS EMPTY!");
+        } else {            
+            Narrator.message("THIS SLOT IS EMPTY!")
             this.playSound("Funk.aiff");
         }
     };
 
     Bookmarker.eraseBookmark = function(bookmark) {
+        // FIXME: What is this? :)
+    };
 
+    Bookmarker.removeAll = function() {
+        var metaLayer=SketchQuery.findOne(this.page().layers().array(),"className=='MSShapeGroup' && name = %@",this.metaStorageID);
+        if(metaLayer) {
+            if(this.isInOverviewMode()) {
+                this.removeRegionsOverlay();
+            }
+
+            metaLayer.parentGroup().removeLayer(metaLayer);
+            Narrator.message("All the bookmarks have been successfully removed.");
+        }
+    };
+
+    Bookmarker.removeSelectedBookmarks = function() {
+        // Select all the visual representations.
+        var list=SketchQuery.find(selection,"(className == 'MSLayerGroup') && (ANY layers.array.name = %@)",this.overviewRegionMetaID);
+        if(!list) return;
+        if(list.count()<1) return;
+
+        var bookmarkToRemove=[];
+        for(var i=0;i<list.count();i++) {
+            var layer=list.objectAtIndex(i);
+
+            var metaLayer=layer.layers().firstObject();
+            if(metaLayer) {
+                var bookmark=JSON.parse(metaLayer.layers().firstObject().name());
+                bookmarkToRemove.push(bookmark.id);
+            }
+        }
+
+        // Clear metadata.
+        this.removeBookmarksWithID(bookmarkToRemove);
+
+        // Remove bookmarks visual representations.
+        utils.currentPage().selectLayers(list);
+        var action=doc.actionWithName("MSCanvasActions");
+        action.delete(null);
     };
 
     Bookmarker.navigateToBookmark = function(bookmark,slotNumber) {
@@ -254,6 +289,7 @@
                 pagesController.reloadData();
             } else {
                 // FIXME: WARNING GOES HERE - IN CASE PAGE IS DEAD, WE CAN'T NAVIGATE!
+                Narrator.message("The page the bookmark referring to isn't exist.");
                 return;
             }
         }
@@ -279,24 +315,16 @@
                 if(bookmark.zoomBehaviour==ZoomBehaviour.KeepCurrent) {
                     view.centerRect_animated(totalRect,animate);
                 } else if(bookmark.zoomBehaviour==ZoomBehaviour.SetTo100Percent) {
-                    view.setZoomValue(1);
 
-                    // view.setZoomValueCenteredInCanvas(1);
-                    view.centerRect_animated(totalRect,animate);
-
+                    // FIXME: The `animate when scrolling` option is dead, since it behaves really odd. Should get back to it later.
+                    view.centerRect_animated(totalRect,false);
+                    view.setZoomValueCenteredInCanvas(1);
 
                 } else if(bookmark.zoomBehaviour==ZoomBehaviour.RestoreFromBookmark) {
 
-                    // view.setZoomValue(bookmark.zoomValue);
-
-                    // view.setZoomValueCenteredInCanvas(bookmark.zoomValue); //
-
-                    view.centerRect_animated(totalRect,false); // Animated causes problems here.
+                    // FIXME: The `animate when scrolling` option is dead, since it behaves really odd. Should get back to it later.
+                    view.centerRect_animated(totalRect,false);
                     view.setZoomValueCenteredInCanvas(bookmark.zoomValue);
-
-
-
-                    // view.setZoomValueCenteredInCanvas(bookmark.zoomValue);
                 }
 
             } else if(bookmark.action==Action.ZoomToFit) {
@@ -309,21 +337,19 @@
             }
 
             if(preferences.displayBookmarkNavigateNotification) {
-                if(slotNumber) {
-                    doc.displayMessage("Navigated to bookmark #"+slotNumber+" - '"+bookmark.name+"'");
-                } else {
-                    doc.displayMessage("Navigated to bookmark '"+bookmark.name+"'");
-                }
+                Narrator.message(slotNumber ? "Navigated to bookmark #"+slotNumber+" - '"+bookmark.name+"'" : "Navigated to bookmark '"+bookmark.name+"'");
             }
 
-            if(preferences.playAudio && false) {
+            if(preferences.playAudio) {
                 this.playSound("Submarine.aiff");
             }
         } else {
-            throw new Error("This bookmark is dead!");
+            // FIXME: Here should be a check for dead bookmarks and they should be removed right here to empty slots for auto-bookmark command!
+            Narrator.message("THIS SLOT IS EMPTY!");
+            return;
         }
 
-        // this.playSound("Submarine.aiff");
+        this.playSound("Submarine.aiff");
     };
 
     Bookmarker.findPageByID = function(id) {
@@ -337,15 +363,24 @@
         return result.count()<1 ? null : result;
     };
 
+    Bookmarker.metaStorageID = "com.bookmarker.meta";
+    Bookmarker.overviewMetaStorageID = "com.bookmarker.meta.overview";
+    Bookmarker.overviewRegionMetaID = "com.bookmarker.overview.region"
+
     Bookmarker.createMetaLayer = function() {
-        var metaLayer = utils.createMetaLayer("#bookmarkerMetaLayer#",JSON.stringify({ bookmarks: [],slots: {} }));
+        var metaLayer = utils.createMetaLayer(this.metaStorageID,JSON.stringify(
+            {
+                version: bookMarkVersion,
+                bookmarks: [],
+                slots: {}
+            }));
         this.page().insertLayers_atIndex([metaLayer],0);
 
         return metaLayer;
     };
 
     Bookmarker.meta = function() {
-        var filter=NSPredicate.predicateWithFormat("className == 'MSShapeGroup' && name == '#bookmarkerMetaLayer#'");
+        var filter=NSPredicate.predicateWithFormat("className == 'MSShapeGroup' && name == %@",this.metaStorageID);
         var result=this.page().layers().array().filteredArrayUsingPredicate(filter);
 
         if(result.count()<1) {
@@ -361,7 +396,7 @@
     };
 
     Bookmarker.saveMeta = function(obj) {
-        var filter=NSPredicate.predicateWithFormat("className == 'MSShapeGroup' && name == '#bookmarkerMetaLayer#'");
+        var filter=NSPredicate.predicateWithFormat("className == 'MSShapeGroup' && name == %@",this.metaStorageID);
         var result=this.page().layers().array().filteredArrayUsingPredicate(filter);
 
         if(result.count()<1) {
@@ -373,6 +408,9 @@
     };
 
     Bookmarker.playSound = function(fileName) {
+        // FIXME: Sounds are temporary turned off due to crashes.
+        return;
+
         var filePath = sketch.scriptPath.stringByDeletingLastPathComponent()+"/../assets/"+fileName;
         var sound = [[NSSound alloc] initWithContentsOfFile:filePath byReference:true];
         sound.play();
@@ -383,13 +421,10 @@
     Bookmarker.setupCustomBookmark = function(options,callback,slotNumber) {
         var slotNumber = slotNumber || -1;
 
-        var suffix = (NSScreen.isOnRetinaScreen()) ? "@2x" : "";
-        var iconFilePath=(slotNumber==-1) ? "/assets/icons/custom_bookmark"+suffix+".png" : "/../assets/toggle_slot_icons/slot_"+slotNumber+suffix+".png";
-
         UI.showAlert({
-            title: (slotNumber!=-1) ? "Toggle Bookmark: Slot #"+slotNumber : "Toggle Bookmark",
-            description: "All the selected layers are going to be treated as a bookmark region. You can setup specific action to perform when navigating to the bookmark.",
-            icon: iconFilePath,
+            title: (slotNumber!=-1) ? "Bookmark Layers: Slot #"+slotNumber : "Bookmark Layers",
+            description: "All the selected layers are going to be treated as a bookmark region. You can setup specific actions to perform when navigating to the bookmark.",
+            icon: fs.resolveImageAsset(slotNumber==-1 ? "./icons/custom_bookmark.png" : "./toggle_slot_icons/slot_"+slotNumber+".png"),
             fields: {
                 name: {
                     label: "Name:",
@@ -434,6 +469,8 @@
                         return map[index];
                     }
                 },
+                // FIXME: `Hide/Show` selection action should be brought back later.
+                /*
                 selectionAction: {
                     label: "Selection:",
                     type: UI.AlertFieldType.Select,
@@ -444,11 +481,13 @@
                         return map[index];
                     }
                 },
+                */
                 selectLayers: {
                     label: "Select bookmarked layers:",
                     type: UI.AlertFieldType.Boolean,
                     value: options.selectLayers
                 }
+                // FIXME: `Description field was removed cause it's not used yet and added some extra clutter. Should bring it back later.
                 /*,
                 description: {
                     label: "Bookmark Description:",
@@ -475,14 +514,7 @@
     };
 
     Bookmarker.toggleCustomBookmark = function() {
-
-        /*
-        this.setupCustomBookmark("YES!",function(data){
-            print(data);
-        });
-        */
         this.toggleBookmark(selection,true);
-
     };
 
     Bookmarker.showNavigationPanel = function() {
@@ -499,11 +531,10 @@
         }
 
         var names = bookmarkNames(meta.bookmarks);
-        print(names);
-
         UI.showAlert({
             title: "Navigate to Bookmark",
-            icon: normalizeIconScaleFactor("/assets/icons/fuzzy_search.png"),
+            description: "User 'Up/Down' keys to select a bookmark, then hit 'Enter' to navigate.",
+            icon: fs.resolveImageAsset("./icons/fuzzy_search.png"),
             fields: {
                 bookmark: {
                     label: "Select bookmark to navigate to:",
@@ -539,6 +570,7 @@
     };
 
     Bookmarker.cyclingInfo = function(meta,increment) {
+        // FIXME: This thing should be revamped!
         var increment = increment || 0;
 
         var persistent=NSThread.currentThread().threadDictionary();
@@ -566,7 +598,6 @@
         }
 
         if(increment!=0) {
-            index=index+increment;
             persistent[key]=(increment<0) ? info.prevBookmarkIndex : info.nextBookmarkIndex;
         }
 
@@ -608,45 +639,49 @@
 
 
     Bookmarker.isInOverviewMode = function() {
-        return SketchQuery.find(utils.currentPage().layers().array(),"ANY layers.array.name == '#allSelectorsMetaLayer#'")!=null;
+        return SketchQuery.find(utils.currentPage().layers().array(),"ANY layers.array.name == %@",this.overviewMetaStorageID)!=null;
     };
 
     Bookmarker.removeRegionsOverlay = function() {
-        var overlay=SketchQuery.findOne(utils.currentPage().layers().array(),"ANY layers.array.name = '#allSelectorsMetaLayer#'");        
+        var overlay=SketchQuery.findOne(utils.currentPage().layers().array(),"ANY layers.array.name = %@",this.overviewMetaStorageID);
         if(overlay) {
             overlay.removeFromParent();
         }
     };
 
+    Bookmarker.canvasState =  {
+        storageID: "com.bookmarker.meta.canvasState",
+        save: function() {
+            var midPoint=doc.currentView().currentMidPoint();
+
+            var canvasState ={
+                midPoint: {
+                    x: midPoint.x.doubleValue(),
+                    y: midPoint.y.doubleValue()
+                },
+                zoom: doc.zoomValue()
+            };
+
+            Persistent.setObject(this.storageID,canvasState);
+        },
+        restore: function() {
+            var canvasState=Persistent.getObject(this.storageID);
+            if(!canvasState) return;
+
+            var rect=GKRect.rectWithRect(NSMakeRect(canvasState.midPoint.x,canvasState.midPoint.y,0,0));
+
+            var view=View.view();
+            view.centerRect_animated(rect,false);
+            view.setZoomValueCenteredInCanvas(canvasState.zoom);
+        }
+    };
+
     Bookmarker.enterOverviewMode = function() {
 
+        Narrator.command("Enter Overview Mode","control-z");
 
-
-        /*
-         var zoomValueKey ="com.turbobabr.bookmarker.location.zoomValue";
-         var scrollOriginKey ="com.turbobabr.bookmarker.location.scrollOrigin";
-
-         var persistent=NSThread.currentThread().threadDictionary();
-         var view=doc.currentView();
-
-
-         function saveLocationData() {
-         var midPoint=view.currentMidPoint();
-         persistent[scrollOriginKey]=midPoint.x+","+midPoint.y;
-         persistent[zoomValueKey]=doc.zoomValue();
-         }
-
-         function loadLocationData() {
-         var midPoint=NSPointFromString(persistent[scrollOriginKey]);
-         var zoomValue=persistent[zoomValueKey];
-
-
-         doc.zoomValue = zoomValue;
-
-         var rect=GKRect.rectWithRect(NSMakeRect(midPoint.x,midPoint.y,0,0));
-         view.centerRect_animated(rect,true);
-         }
-         */
+        // Saving current canvas state.
+        this.canvasState.save();
 
         utils.deselectAllLayers();
 
@@ -654,10 +689,10 @@
         var bookmarks=meta.bookmarks;
 
         var group=MSLayerGroup.alloc().init();
-        group.name = "Bookmars Regions";
+        group.name = "com.bookmarker.overview.overlay";
 
         // Add meta layer.
-        var metaLayer=utils.createMetaLayer("#allSelectorsMetaLayer#","none");
+        var metaLayer=utils.createMetaLayer(this.overviewMetaStorageID,"none");
         group.addLayers([metaLayer]);
 
         var currentPageID=utils.currentPage().objectID();
@@ -675,7 +710,8 @@
                     var region=this.createBookmarkRegion(bookmark);
                     group.insertLayers_afterLayer([region],metaLayer);
                 } else {
-                    throw new Error("There is a dead bookmark here!");
+                    // FIXME: Here should be a procedure of removing the dead bookmarks!
+                    print("There is a dead bookmark here!");
                 }
 
             }
@@ -692,7 +728,9 @@
     Bookmarker.exitOverviewMode = function() {
 
         function findSelectorMeta(layer) {
-            var metaLayer=SketchQuery.findOne(layer.layers().array(),"name == '#selectorMetaLayer#'");
+            if(!layer.isKindOfClass(MSLayerGroup)) return null;
+            
+            var metaLayer=SketchQuery.findOne(layer.layers().array(),"name == %@",Bookmarker.overviewRegionMetaID);
             if(!metaLayer) return null;
             if(metaLayer.layers().count()<1) return null;
 
@@ -706,26 +744,27 @@
 
             var bookmark=findSelectorMeta(layer);
             if(bookmark) {
-                // Bookmarker.removeRegionsOverlay();
-                // SpeakerDeck.showKeyStoke("control-z","Navigate To Selected Bookmarks");
-
+                Narrator.command("Navigate To Selected Bookmarks","control-z");
                 Bookmarker.navigateToBookmark(bookmark,bookmark.slot);
             } else {
+                Narrator.command("Center On Selected Layer","control-z");
                 this.removeRegionsOverlay();
-                View.centerRect(layer.absoluteRect());
+
+                var view=View.view();
+                view.centerRect_animated(layer.absoluteRect(),false);
+                view.setZoomValueCenteredInCanvas(1);
             }
 
         } else if(selection.count()>1) {
-
-            // SpeakerDeck.showKeyStoke("control-z","Zoom To Selected Bookmarks");
+            Narrator.command("Zoom To Selection","control-z");
             View.zoomToSelection();
             Bookmarker.removeRegionsOverlay();
             utils.deselectAllLayers();
 
         } else {
-            // SpeakerDeck.showKeyStoke("control-z","Restore Original Viewport");
+            Narrator.command("Exit Overview Mode","control-z");
             Bookmarker.removeRegionsOverlay();
-            // loadLocationData();
+            this.canvasState.restore();
         }
     };
 
@@ -777,7 +816,7 @@
         group.name=bookmark.name;
 
         // Add meta-layer.
-        var metaLayer=utils.createMetaLayer("#selectorMetaLayer#",JSON.stringify(bookmark));
+        var metaLayer=utils.createMetaLayer(this.overviewRegionMetaID,JSON.stringify(bookmark));
         group.addLayers([metaLayer]);
 
 
@@ -795,10 +834,7 @@
         var label=group.addLayerOfType("text");
         label.fontSize=11*(1/viewPort.zoomValue());
         label.stringValue=bookmark.name;
-        /*
-         var fill = label.style().fills().addNewStylePart();
-         fill.color = utils.colorWithHex("#ffffff");
-         */
+
         Shaper.fill(label,{ color:"#ffffff"});
 
         label.frame().x=frame.x()+3;
@@ -836,7 +872,7 @@
     Bookmarker.validateEdit = function(layer) {
         if(this.isInOverviewMode() && layer.isKindOfClass(MSLayerGroup)) {
             var metaLayer=layer.layers().firstObject();
-            if(metaLayer && metaLayer.name()=="#selectorMetaLayer#") {
+            if(metaLayer && metaLayer.name()==this.overviewRegionMetaID) {
                 return true;
             }
         }
@@ -846,7 +882,7 @@
 
     Bookmarker.editBookmark = function(layer) {
         var metaLayer=layer.layers().firstObject();
-        if(metaLayer && metaLayer.name()=="#selectorMetaLayer#") {
+        if(metaLayer && metaLayer.name()==this.overviewRegionMetaID) {
             var bookmark=JSON.parse(metaLayer.layers().firstObject().name());
 
             this.setupCustomBookmark(bookmark,function(options){

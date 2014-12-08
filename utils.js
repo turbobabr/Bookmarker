@@ -19,6 +19,9 @@
         },
 
         showSelection: function(show) {
+            // FIXME: Selection action is turned off, should be back soon! :)
+            return;
+
             var defaults = NSUserDefaults.standardUserDefaults();
             var isVisible=defaults.boolForKey("MSNormalEventDrawSelection");
             if((show && !isVisible) || (!show && isVisible)) doc.toggleSelection(null);
@@ -141,6 +144,64 @@
 
     };
 
+    var fs = {
+        resolve: function(path) {
+            var root=MSPlugin.pluginsURL().path();
+            var parts=sketch.scriptPath.split("/");
+            parts=parts.slice(root.split("/").length);
+
+            if(parts.length>0) {
+                root=root+"/"+parts[0];
+            }
+
+            return root+"/"+path;
+        },
+        resolveAsset: function(path) {
+            return this.resolve("assets/"+path)
+        },
+        resolveImageAsset: function(path) {
+            var path2x=path.replace(/.png/g,"@2x.png");
+            return this.resolveAsset((NSScreen.isOnRetinaScreen() && this.exists(this.resolveAsset(path2x))) ? path2x : path);
+        },
+        image: function(path) {
+            if(!this.exists(path)) {
+                throw new Error("Specified image file isn't exist at path '"+path+"'");
+                return null;
+            }
+
+            return NSImage.alloc().initWithContentsOfFile(path)
+        },
+
+        exists: function(path) {
+            return NSFileManager.defaultManager().fileExistsAtPath(path);
+        },
+
+        remove: function(path) {
+            NSFileManager.defaultManager().removeItemAtPath_error(path,null);
+        },
+
+        writeString: function(obj,path) {
+            return NSString.stringWithString(obj).writeToFile_atomically_encoding_error(path,true,NSUTF8StringEncoding,null);
+        },
+
+        readString: function(path) {
+            return NSString.stringWithContentsOfFile_encoding_error(path,NSUTF8StringEncoding,null);
+        },
+
+        readJSON: function(path) {
+            var obj=null;
+            try {
+                obj=JSON.parse(this.readString(path));
+            } catch(e) {
+                throw new Error("Can't parse JSON string!")
+            }
+            return obj;
+        },
+        writeJSON: function(obj,path) {
+            return this.writeString(JSON.stringify(obj,null,4),path);
+        }
+    };
+
     var View = {
         centerRect: function(rect,animated) {
             var animated = animated || true;
@@ -160,9 +221,23 @@
         }
     };
 
+    var Persistent = {
+        storage: function() {
+            return NSThread.currentThread().threadDictionary();
+        },
+        setObject: function(key,obj) {
+            this.storage()[key]=JSON.stringify(obj);
+        },
+        getObject: function(key) {
+            return JSON.parse(this.storage()[key]);
+        }
+    };
+
     this.BorderPosition = BorderPosition;
     this.Shaper = Shaper;
     this.View = View;
+    this.fs = fs;
+    this.Persistent = Persistent;
 
 
 }).call(this);
