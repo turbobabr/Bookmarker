@@ -20,8 +20,6 @@ This plugin is a real time saver when you work with huge documents and want to q
 
 ## Usage
 
-<iframe name='quickcast' src='http://quick.as/embed/mqegfqy2' scrolling='no' frameborder='0' width='100%' allowfullscreen></iframe><script src='http://quick.as/embed/script/1.63'></script>
-
 Bookmarker can be used in many ways. The primary feature is...
 
 ### Bookmarking selected layers and assigning shortcuts
@@ -62,6 +60,8 @@ A very convenient way of navigation through bookmarks is using of overview mode:
 3. Hit `Control-Z` to navigate to it.
 
 #### Navigate: Using 'Prev/Next' commands
+
+To quickly cycle through bookmarks using the following shortcuts:
 
 - Previous bookmark `Control-Shift-,`
 - Next bookmark `Control-Shift-.`

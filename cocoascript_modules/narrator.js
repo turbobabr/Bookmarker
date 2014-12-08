@@ -84,7 +84,6 @@
         return image;
     }
 
-
     function displayImage(image,delay) {
         doc.displayMessage_timeout("",delay);
         var window=doc.messageWindow();
@@ -119,25 +118,26 @@
         frame.size.width=width;
         frame.size.height=height;
 
-        print(frame);
-
         [window setFrame: frame display:true animate:false];
     }
 
     var root = this;
 
     var Narrator = {};
-    Narrator.command = function(title,keystroke,delay) {
-        var delay=delay || 2;
 
-        // var image=createImage(title);
+    Narrator.displayCommands = false;
+
+    Narrator.command = function(title,keystroke,delay) {
+        if(!this.displayCommands) return;
+
+        var delay=delay || 2;
         var image=createImage(title,this.humanizeKeystroke(keystroke));
         displayImage(image,delay);
 
     };
 
     Narrator.message = function(str) {
-        // print("Speaker Deck Message: "+str);
+        if(this.displayCommands) return;
         doc.displayMessage(str);
     };
 

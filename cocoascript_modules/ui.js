@@ -19,9 +19,10 @@
         var window=COSAlertWindow.new();
 
         if(alert.icon) {
-            var iconFilePath=sketch.scriptPath.stringByDeletingLastPathComponent()+alert.icon;
 
-            var icon = NSImage.alloc().initByReferencingFile(iconFilePath);
+            // var iconFilePath=sketch.scriptPath.stringByDeletingLastPathComponent()+alert.icon;
+            // var icon = NSImage.alloc().initByReferencingFile(iconFilePath);
+            var icon=fs.image(alert.icon);
             window.setIcon(icon);
         }
 

@@ -1,4 +1,5 @@
 // (control shift p)
+// FIXME: Preferences are temporary turned off.
 #import 'bookmarks.js'
 (function(){
     Bookmarker.preferences();
