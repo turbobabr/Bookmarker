@@ -37,7 +37,7 @@ To bookmark layers and configure the created bookmark:
 1. Select one or several layers you want to bookmark.
 2. Hit `Control-Shift-Option-[0..9]`
 3. Setup bookmark name and actions.
-4. Click 'OK' button, or hit 'Enter'.
+4. Click `OK` button, or hit `Enter`.
 
 ### Auto-Bookmarking selected layers
 
@@ -51,7 +51,7 @@ If you want to use auto-bookmarking command and configure the created bookmark, 
 1. Select one or several layer.
 2. Hit `Control-Shift-Option-B`.
 3. Setup bookmark name and actions.
-4. Click 'OK' button, or hit 'Enter'.
+4. Click `OK` button, or hit `Enter`.
 
 In case there is an empty slot in `Control-[0..9]` shortcuts set, the first empty shortcut will be auto assigned to the created bookmark. Otherwise it will have no assigned shortcut.
 
