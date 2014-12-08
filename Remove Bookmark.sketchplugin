@@ -1,8 +1,6 @@
 // (command ⌫)
 #import 'bookmarks.js'
 (function(){
-
     Narrator.command("Remove Selected Bookmarks","command-⌫");
     Bookmarker.removeSelectedBookmarks();
-
 })();

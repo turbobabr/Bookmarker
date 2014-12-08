@@ -21,6 +21,7 @@ This plugin is a real time saver when you work with huge documents and want to q
 ## Usage
 
 Bookmarker can be used in many ways. The primary feature is...
+![Screencast](https://raw.githubusercontent.com/turbobabr/Bookmarker/gh-pages/docs/main_screencast.png)
 
 ### Bookmarking selected layers and assigning shortcuts
 
