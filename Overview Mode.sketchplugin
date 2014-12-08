@@ -3,10 +3,10 @@
 
 (function(){
     if(Bookmarker.isInOverviewMode()) {
-        Narrator.command("Exit Overview Mode","control-z");
+        // Narrator.command("Exit Overview Mode","control-z");
         Bookmarker.exitOverviewMode();
     } else {
-        Narrator.command("Enter Overview Mode","control-z");
+        // Narrator.command("Enter Overview Mode","control-z");
         Bookmarker.enterOverviewMode();
     }
 })();

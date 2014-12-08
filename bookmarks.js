@@ -678,6 +678,8 @@
 
     Bookmarker.enterOverviewMode = function() {
 
+        Narrator.command("Enter Overview Mode","control-z");
+
         // Saving current canvas state.
         this.canvasState.save();
 
@@ -726,6 +728,8 @@
     Bookmarker.exitOverviewMode = function() {
 
         function findSelectorMeta(layer) {
+            if(!layer.isKindOfClass(MSLayerGroup)) return null;
+            
             var metaLayer=SketchQuery.findOne(layer.layers().array(),"name == %@",Bookmarker.overviewRegionMetaID);
             if(!metaLayer) return null;
             if(metaLayer.layers().count()<1) return null;
@@ -740,11 +744,10 @@
 
             var bookmark=findSelectorMeta(layer);
             if(bookmark) {
-                // FIXME: Narrator should emmit command here
-                // SpeakerDeck.showKeyStoke("control-z","Navigate To Selected Bookmarks");
+                Narrator.command("Navigate To Selected Bookmarks","control-z");
                 Bookmarker.navigateToBookmark(bookmark,bookmark.slot);
             } else {
-                // FIXME: Narrator should emmit command here
+                Narrator.command("Center On Selected Layer","control-z");
                 this.removeRegionsOverlay();
 
                 var view=View.view();
@@ -753,16 +756,13 @@
             }
 
         } else if(selection.count()>1) {
-
-            // FIXME: Narrator should emmit command here
-            // SpeakerDeck.showKeyStoke("control-z","Zoom To Selected Bookmarks");
+            Narrator.command("Zoom To Selection","control-z");
             View.zoomToSelection();
             Bookmarker.removeRegionsOverlay();
             utils.deselectAllLayers();
 
         } else {
-            // FIXME: Narrator should emmit command here
-            // SpeakerDeck.showKeyStoke("control-z","Restore Original Viewport");
+            Narrator.command("Exit Overview Mode","control-z");
             Bookmarker.removeRegionsOverlay();
             this.canvasState.restore();
         }
