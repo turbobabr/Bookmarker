@@ -32,6 +32,7 @@
         RestoreFromBookmark: "restoreFromBookmark"
     };
 
+    // FIXME: The metadata versioning system should be more clear! :)
     var bookMarkVersion="1";
 
     function bookmarkWithID(bookmarks,id) {
@@ -233,6 +234,44 @@
         // FIXME: What is this? :)
     };
 
+    Bookmarker.removeAll = function() {
+        var metaLayer=SketchQuery.findOne(this.page().layers().array(),"className=='MSShapeGroup' && name = %@",this.metaStorageID);
+        if(metaLayer) {
+            if(this.isInOverviewMode()) {
+                this.removeRegionsOverlay();
+            }
+
+            metaLayer.parentGroup().removeLayer(metaLayer);
+            Narrator.message("All the bookmarks have been successfully removed.");
+        }
+    };
+
+    Bookmarker.removeSelectedBookmarks = function() {
+        // Select all the visual representations.
+        var list=SketchQuery.find(selection,"(className == 'MSLayerGroup') && (ANY layers.array.name = %@)",this.overviewRegionMetaID);
+        if(!list) return;
+        if(list.count()<1) return;
+
+        var bookmarkToRemove=[];
+        for(var i=0;i<list.count();i++) {
+            var layer=list.objectAtIndex(i);
+
+            var metaLayer=layer.layers().firstObject();
+            if(metaLayer) {
+                var bookmark=JSON.parse(metaLayer.layers().firstObject().name());
+                bookmarkToRemove.push(bookmark.id);
+            }
+        }
+
+        // Clear metadata.
+        this.removeBookmarksWithID(bookmarkToRemove);
+
+        // Remove bookmarks visual representations.
+        utils.currentPage().selectLayers(list);
+        var action=doc.actionWithName("MSCanvasActions");
+        action.delete(null);
+    };
+
     Bookmarker.navigateToBookmark = function(bookmark,slotNumber) {
         if(!bookmark) return;
 
@@ -329,7 +368,12 @@
     Bookmarker.overviewRegionMetaID = "com.bookmarker.overview.region"
 
     Bookmarker.createMetaLayer = function() {
-        var metaLayer = utils.createMetaLayer(this.metaStorageID,JSON.stringify({ bookmarks: [],slots: {} }));
+        var metaLayer = utils.createMetaLayer(this.metaStorageID,JSON.stringify(
+            {
+                version: bookMarkVersion,
+                bookmarks: [],
+                slots: {}
+            }));
         this.page().insertLayers_atIndex([metaLayer],0);
 
         return metaLayer;
