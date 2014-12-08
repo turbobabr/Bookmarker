@@ -28,11 +28,6 @@
         text.adjustFrameToFit();
 
 
-        /*
-         text.frame().mid=rectangle.frame().mid();
-         text.frame().makeRectIntegral();
-         */
-
         var keystrokeText=subGroup.addLayerOfType("text");
         keystrokeText.stringValue=keystroke;
         keystrokeText.fontSize=40;
@@ -48,16 +43,12 @@
         keystrokeText.frame().midX=subGroup.frame().midX();
         text.frame().midX=subGroup.frame().midX();
 
-
-
-
         // var rect=GKRect.rectWithUnionOfRects([text.frame().GKRect(),keystrokeText.frame().GKRect()]);
         var rect=subGroup.frame().GKRect();
         rect.expandXBy_yBy(padding.horz,padding.vert);
         rectangle.frame().size=rect.size();
 
         subGroup.frame().mid=rectangle.frame().mid();
-
 
 
         var borderRadius=text.fontSize()*0.3;
@@ -125,7 +116,7 @@
 
     var Narrator = {};
 
-    Narrator.displayCommands = false;
+    Narrator.displayCommands = true;
 
     Narrator.command = function(title,keystroke,delay) {
         if(!this.displayCommands) return;

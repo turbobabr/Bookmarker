@@ -422,8 +422,8 @@
         var slotNumber = slotNumber || -1;
 
         UI.showAlert({
-            title: (slotNumber!=-1) ? "Toggle Bookmark: Slot #"+slotNumber : "Toggle Bookmark",
-            description: "All the selected layers are going to be treated as a bookmark region. You can setup specific action to perform when navigating to the bookmark.",
+            title: (slotNumber!=-1) ? "Bookmark Layers: Slot #"+slotNumber : "Bookmark Layers",
+            description: "All the selected layers are going to be treated as a bookmark region. You can setup specific actions to perform when navigating to the bookmark.",
             icon: fs.resolveImageAsset(slotNumber==-1 ? "./icons/custom_bookmark.png" : "./toggle_slot_icons/slot_"+slotNumber+".png"),
             fields: {
                 name: {
