@@ -1,9 +1,7 @@
 <img src="https://raw.githubusercontent.com/turbobabr/Bookmarker/gh-pages/docs/bookmarker_github_hero.png">
 ===============
 
-Bookmarker is an ultimate solution for [Sketch App](http://bohemiancoding.com/sketch/) to bookmark layers and navigate through the toggled bookmarks using predefined shortcuts or special overview mode.
-
-This plugin is a real time saver when you work with huge documents and want to quickly navigate to any known part of it!
+Bookmarker is an ultimate solution for bookmarking layers in [Sketch App](http://bohemiancoding.com/sketch/). This plugin is a real time saver when you work with huge documents and want to quickly navigate to any known part of it!
 
 ## Installation
 
@@ -20,7 +18,7 @@ This plugin is a real time saver when you work with huge documents and want to q
 
 ## Usage
 
-Bookmarker can be used in many ways. The primary feature is...
+Bookmarker has a plethora of features! The best way to explore them is by watching this screencast:
 ![Screencast](https://raw.githubusercontent.com/turbobabr/Bookmarker/gh-pages/docs/main_screencast.png)
 
 ### Bookmarking selected layers and assigning shortcuts
