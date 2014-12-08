@@ -533,6 +533,7 @@
         var names = bookmarkNames(meta.bookmarks);
         UI.showAlert({
             title: "Navigate to Bookmark",
+            description: "User 'Up/Down' keys to select a bookmark, then hit 'Enter' to navigate.",
             icon: fs.resolveImageAsset("./icons/fuzzy_search.png"),
             fields: {
                 bookmark: {

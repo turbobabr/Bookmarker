@@ -23,10 +23,19 @@ Bookmarker has a plethora of features! The best way to explore them is by watchi
 
 ### Bookmarking selected layers and assigning shortcuts
 
+Bookmark layers with default options:
+
 1. Select one or several layers you want to bookmark.
 2. Hit `Control-Shift-[0..9]` to bookmark them, where `[0..9]` is a numeric key and a slot number you want to assign the created shortcut to.
 
 In case the shortcut is taken by the existing bookmark, it will be re-assigned to a new one and the previously assigned bookmark will be automatically discarded.
+
+To bookmark layers and configure the created bookmark:
+
+1. Select one or several layers you want to bookmark.
+2. Hit 'Control-Shift-Option-[0..9]'
+3. Setup bookmark name and actions.
+4. Click 'OK' button, or hit 'Enter'.
 
 ### Auto-Bookmarking selected layers
 
@@ -35,14 +44,21 @@ There is a handy command for bookmarking selected layers and get the created boo
 1. Select one or several layers you want to bookmark.
 2. Hit `Control-B` to bookmark them.
 
+If you want to use auto-bookmarking command and configure the created bookmark, use the following workflow:
+
+1. Select one or several layer.
+2. Hit 'Control-Shift-Option-B'.
+3. Setup bookmark name and actions.
+4. Click 'OK' button, or hit 'Enter'.
+
 In case there is an empty slot in `Control-[0..9]` shortcuts set, the first empty shortcut will be auto assigned to the created bookmark. Otherwise it will have no assigned shortcut.
 
-#### Navigate: Using number shortcuts
+### Navigate: Using number shortcuts
 
 You can navigate to the bookmarked layers that were assigned to a specific shortcut using:
 - `Control-[0..9]`, where `[0..9]` is a numeric key and a slot number of the shortcut you want to navigate to.
 
-#### Navigate: Using 'Bookmarks Panel'
+### Navigate: Using 'Bookmarks Panel'
 
 When you have a huge list of meaningfully named bookmarks its easier to navigate using bookmarks panel:
 
@@ -50,7 +66,7 @@ When you have a huge list of meaningfully named bookmarks its easier to navigate
 2. Select any listed shortcut from the panels' list using mouse or `Up/Down` keys:
 3. Click `OK` button or hit `Enter` to navigate.
 
-#### Navigate: Using 'Overview Mode'
+### Navigate: Using 'Overview Mode'
 
 A very convenient way of navigation through bookmarks is using of overview mode:
 
@@ -58,14 +74,14 @@ A very convenient way of navigation through bookmarks is using of overview mode:
 2. Select the bookmark you want to navigate to.
 3. Hit `Control-Z` to navigate to it.
 
-#### Navigate: Using 'Prev/Next' commands
+### Navigate: Using 'Prev/Next' commands
 
 To quickly cycle through bookmarks using the following shortcuts:
 
 - Previous bookmark `Control-Shift-,`
 - Next bookmark `Control-Shift-.`
 
-#### Remove: Certain bookmark
+### Remove: Certain bookmark
 
 To remove a certain bookmark:
 
@@ -76,7 +92,7 @@ To remove a certain bookmark:
 
 In case bookmark had the assigned shortcut to it, it will be emptied.
 
-#### Remove: All bookmarks
+### Remove: All bookmarks
 
 You can remove all the bookmarks from the document using the following two techniques:
 - By removing layer named `#bookmarkerMetaLayer#` that is located at the bottom of your layer list in the first page of your document.
@@ -86,10 +102,9 @@ You can remove all the bookmarks from the document using the following two techn
 
 If you discover any issue or have any suggestions, please [open an issue](https://github.com/turbobabr/bookmarker/issues) or find me on twitter [@turbobabr](http://twitter.com/turbobabr).
 
-## Credits
+## Thanks
 
-TODO: Credits go here!
-
+Huge thanks to [George Papadakis](https://twitter.com/phaistonian), who has inspired me to create this plugin! :)
 
 ## License
 
