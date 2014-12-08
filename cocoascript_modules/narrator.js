@@ -116,7 +116,7 @@
 
     var Narrator = {};
 
-    Narrator.displayCommands = true;
+    Narrator.displayCommands = false;
 
     Narrator.command = function(title,keystroke,delay) {
         if(!this.displayCommands) return;
