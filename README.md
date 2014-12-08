@@ -7,7 +7,7 @@ Bookmarker is an ultimate solution for bookmarking layers in [Sketch App](http:/
 
 ## Installation
 
-1. [Download Bookmarker.zip archive file](https://github.com/turbobabr/Bookmarker/archive/develop.zip).
+1. [Download Bookmarker.zip archive file](https://github.com/turbobabr/Bookmarker/archive/master.zip).
 2. Reveal plugins folder in finder ('Sketch App Menu' -> 'Plugins' -> 'Reveal Plugins Folder...').
 3. Copy downloaded zip file to the revealed folder and un-zip it.
 4. You are ready to go! :)

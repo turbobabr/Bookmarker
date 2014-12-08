@@ -19,6 +19,9 @@
         },
 
         showSelection: function(show) {
+            // FIXME: Selection action is turned off, should be back soon! :)
+            return;
+
             var defaults = NSUserDefaults.standardUserDefaults();
             var isVisible=defaults.boolForKey("MSNormalEventDrawSelection");
             if((show && !isVisible) || (!show && isVisible)) doc.toggleSelection(null);
