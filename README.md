@@ -3,7 +3,7 @@
 
 Bookmarker is an ultimate solution for bookmarking layers in [Sketch App](http://bohemiancoding.com/sketch/). This plugin is a real time saver when you work with huge documents and want to quickly navigate to any known part of it!
 
-> Currently this plugin is in a beta stage. I will be posting updates in my twitter. Follow me [@turbobabr](https://twitter.com/turbobabr) to stay tuned.
+> Currently this plugin is in a beta stage. I will be posting updates in my twitter. Follow me [@turbobabr](https://twitter.com/turbobabr) to get news about Bookmarker and my other plugins updates! :)
 
 ## Installation
 
@@ -14,7 +14,7 @@ Bookmarker is an ultimate solution for bookmarking layers in [Sketch App](http:/
 
 ## Change Log
 
-##### v0.1.0: December 7, 2014
+##### v0.1.0 Beta: December 8, 2014
 
 - Initial release with a bunch of bugs! :)
 
